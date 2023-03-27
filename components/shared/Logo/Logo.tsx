@@ -6,10 +6,7 @@ type Props = {}
 
 function Logo({}: Props) {
   return (
-    <Link
-      href="/"
-      style={{ width: "193px", height: "46px" }}
-      className={s.logo}>
+    <Link href="/" className={s.logo}>
       <span className={s.logoText}>VIXIEES</span>
     </Link>
   )

@@ -1,6 +1,7 @@
 import { s } from "sanity-typed-schema-builder"
 import { ctaType } from "schemas"
 import { customUrlType } from "schemas/objects/customUrl"
+import util from "util"
 
 type CTA = s.infer<typeof ctaType>
 type URL = s.infer<typeof customUrlType>
@@ -31,3 +32,12 @@ export const getParent = (input: any) => {
 
   return `${getParent(input.parent)}/${input.slug}`
 }
+
+export const serverLog = (x: any) =>
+  console.log(
+    util.inspect(x, {
+      showHidden: false,
+      depth: null,
+      colors: true,
+    })
+  )

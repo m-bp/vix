@@ -15,7 +15,7 @@ export default function MainLayout({
   page,
   children,
 }: {
-  preview: boolean
+  preview?: boolean
   loading?: boolean
   page?: Page
   children: React.ReactNode
