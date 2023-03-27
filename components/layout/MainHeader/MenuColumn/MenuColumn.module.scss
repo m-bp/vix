@@ -1,0 +1,79 @@
+.wrapper {
+  border-top: 3px solid var(--color);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px 20px 25px;
+  // ...
+
+  @include mq(md) {
+    // ...
+  }
+
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+.title {
+  padding: 0 0 1rem 1rem;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $text-primary;
+}
+
+.listWrapper {
+}
+
+.itemsWrapper {
+  display: grid;
+  gap: 15px;
+  padding-top: 1rem;
+}
+
+.itemsWrappersingle {
+  composes: itemsWrapper;
+}
+
+.itemsWrapperdouble {
+  composes: itemsWrapper;
+  grid-template-columns: 1fr 1fr;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  font-size: 15px;
+  min-width: 180px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  background-color: var(--color);
+  border-radius: 5px;
+}
+
+.itemLink {
+  display: grid;
+
+  &:hover {
+    color: $primary-light;
+  }
+}
+
+.itemTitle {
+  font-weight: bold;
+}
+
+.divider {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}

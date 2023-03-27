@@ -1,0 +1,21 @@
+import accept from "@hapi/accept"
+import { NextRequest, NextResponse } from "next/server"
+
+const LOCALES = ["en-US", "es-ES"]
+
+const PUBLIC_FILE = /\.(.*)$/
+
+const stripDefaultLocale = (str: string): string => str.replace("/default", "")
+
+export function middleware(request: NextRequest) {
+  const { nextUrl, headers } = request
+  const acceptLanguage = headers.get("accept-language") || undefined
+  const language = accept.language(acceptLanguage, LOCALES) || "es-ES"
+
+  const shouldHandleLocale =
+    !PUBLIC_FILE.test(nextUrl.pathname) && nextUrl.locale === "default"
+  const url = nextUrl.clone()
+  url.pathname = `/${language}${stripDefaultLocale(nextUrl.pathname)}`
+
+  return shouldHandleLocale ? NextResponse.redirect(url) : undefined
+}

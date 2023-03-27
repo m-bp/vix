@@ -1,0 +1,54 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @include mq(md) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  @include mq(lg) {
+    gap: 1rem;
+  }
+}
+
+.card {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 0.5rem 2rem rgba(39, 40, 41, 0.07);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  margin: 40px auto 0;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1rem 2rem 2rem;
+  flex: 1 0;
+}
+
+.title {
+  font-size: 1.4375rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.body {
+  margin-bottom: 2rem;
+  color: #878993;
+}
+
+.cta {
+  margin: auto auto 0;
+}

@@ -1,0 +1,19 @@
+// TODO: twin
+import { icons } from '@sanity/icons'
+
+export default function Icons() {
+  return (
+    <section className="grid grid-flow-dense grid-cols-5 gap-6">
+      {Object.keys(icons).map((x, i) => {
+        const I = icons[x]
+
+        return (
+          <div key={i} className="flex gap-2">
+            <I fontSize={40} />
+            {x}
+          </div>
+        )
+      })}
+    </section>
+  )
+}

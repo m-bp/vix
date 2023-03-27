@@ -1,0 +1,46 @@
+.wrapper {
+  position: absolute;
+  top: 200%;
+  left: var(--offset, 50%);
+  transform: translateX(-50%);
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  clip: rect(0, 5000px, 5000px, -5000px);
+  width: max-content;
+  max-width: min(1280px, 90vw);
+  overflow: auto;
+  animation: fadeIn 0.3s;
+
+  // ...
+
+  @include mq(md) {
+    // ...
+  }
+}
+
+.columnGrid {
+  display: flex;
+  gap: 1px;
+  // grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.bottomLink {
+  padding: 15px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    color: $primary-light;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

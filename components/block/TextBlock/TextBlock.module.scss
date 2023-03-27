@@ -1,0 +1,22 @@
+.wrapper {
+  // ...
+
+  @include mq(md) {
+    // ...
+  }
+}
+
+.text {
+  opacity: 0.8;
+
+  &.left {
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.right {
+    text-align: right;
+  }
+}

@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.hr {
+  display: block;
+  color: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid currentColor;
+  width: 100%;
+}

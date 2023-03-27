@@ -1,0 +1,134 @@
+.wrapper {
+  overflow-x: auto;
+  padding: 2em 1rem;
+
+  // table,
+  // thead,
+  // tbody,
+  // tr,
+  // th,
+  // td {
+  //   display: revert;
+  // }
+}
+
+.table {
+  position: relative;
+  font-size: 15px;
+  width: 100%;
+}
+
+.body {
+  position: relative;
+  z-index: 1;
+}
+
+.row {
+  position: relative;
+  text-align: center;
+  display: grid;
+  display: flex;
+  grid-template-columns: 33% repeat(4, calc((100% - 33%) / 4));
+  gap: 2rem;
+  padding-right: 1rem;
+
+  > *:first-child {
+    width: 33%;
+  }
+
+  > * {
+    flex: 1 0 150px;
+    width: calc((100% - 33%) / 4);
+  }
+
+  &:nth-child(odd):not(.headRow) {
+    background-color: #f4f4f4;
+
+    .firstColumn {
+      // background-color: transparent;
+      background-color: #fafafa;
+    }
+
+    .column {
+      // background-color: transparent;
+      background-color: #fafafa;
+      box-shadow: 0 0 1rem rgba(39, 40, 41, 0.07);
+    }
+  }
+}
+
+.hintWrapper {
+  position: absolute;
+  top: 5px;
+  right: 1rem;
+  font-size: 12px;
+}
+
+.hint {
+  display: none;
+
+  .hintWrapper:hover & {
+    display: block;
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+    width: max-content;
+    max-width: 250px;
+    z-index: 1;
+  }
+}
+
+.column {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(39, 40, 41, 0.07);
+
+  &:first-child {
+    width: 33%;
+  }
+}
+
+.firstColumn {
+  position: relative;
+  margin-right: -2rem;
+  padding: 1.25rem 1rem;
+}
+
+.head {
+}
+
+.headRow {
+  composes: row;
+  color: $primary-light;
+  font-weight: bold;
+}
+
+.floatingy {
+  position: fixed;
+  top: var(--tableOffsety, 50px);
+  left: calc(-1 * var(--tableOffset, auto) + 2.5rem);
+  width: var(--tableWidth, 100%);
+  background-color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 50;
+}
+
+.floatingn {
+  display: none;
+}
+
+.headColumn {
+  composes: column;
+  padding: 1.25rem 0.5rem;
+}
+
+.ctaColumn {
+  composes: column;
+  padding: 5px;
+}

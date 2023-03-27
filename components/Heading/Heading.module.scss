@@ -1,0 +1,39 @@
+.heading {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: $primary-main;
+
+  @include mq(md) {
+    // ...
+  }
+}
+
+.h1 {
+  composes: heading;
+  font-size: 2em;
+}
+
+.h2 {
+  composes: heading;
+  font-size: 1.15em;
+}
+
+.h3 {
+  composes: heading;
+  font-size: 1.1em;
+}
+
+.h4 {
+  composes: heading;
+  font-size: 1.05em;
+}
+
+.h5 {
+  composes: heading;
+  font-size: 1em;
+}
+
+.h6 {
+  composes: heading;
+  font-size: 1em;
+}

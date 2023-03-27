@@ -1,0 +1,15 @@
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  z-index: 50;
+  width: 100%;
+  border-top: 2px solid $primary-light;
+  background-color: $primary-dark;
+  color: $text-inverse;
+}
+
+.innerContainer {
+  padding: 0.5rem 0;
+  text-align: center;
+  font-size: 0.75rem;
+}

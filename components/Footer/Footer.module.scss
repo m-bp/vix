@@ -1,0 +1,127 @@
+.wrapper {
+  display: grid;
+  margin-top: auto;
+  margin-bottom: 1rem;
+  font-size: 13px;
+}
+
+.divider {
+  display: none;
+  height: 1px;
+  margin-bottom: 60px;
+  background-color: rgba(0, 0, 0, 0.1);
+
+  .footer + & {
+    margin-bottom: 1rem;
+  }
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.footer {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 10px;
+  margin-bottom: 30px;
+
+  // Accordion off
+  @include mq(md) {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 24px;
+  }
+}
+
+.logo {
+  display: none;
+
+  @include mq(md) {
+    display: block;
+  }
+
+  img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.column {
+  display: grid;
+  gap: 0.75rem;
+
+  &:last-child :where(.divider) {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .divider {
+    @include mq(md) {
+      display: none;
+    }
+  }
+}
+
+.title {
+  display: none;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 1.25rem;
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.item {
+  // ...
+}
+
+.link {
+  text-decoration: none;
+  color: #878993;
+  transition: color $transition-duration;
+
+  &:hover {
+    color: $primary-light;
+  }
+}
+
+.bottomLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+
+  a {
+    color: $text-primary;
+  }
+
+  @include mq(md) {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.bottomText {
+  font-size: 12px;
+  margin-bottom: 3rem;
+}
+
+.columnHeader {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.columnCollapse {
+  @include mq(md) {
+    display: block !important;
+    overflow: visible !important;
+    height: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

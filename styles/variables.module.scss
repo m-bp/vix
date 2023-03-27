@@ -1,0 +1,40 @@
+$primary-light: #4388cc;
+$primary-main: #082440;
+$primary-dark: #02162a;
+
+$secondary-light: #11bcf0;
+$secondary-main: #0b80a3;
+$secondary-dark: #064457;
+
+$text-primary: #000;
+$text-secondary: #484848;
+$text-inverse: #fff;
+
+$transition-duration: 0.3s;
+
+$breakpoint-sm: 375px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1280px;
+$breakpoint-xl: 1920px;
+
+@mixin mq($breakpoint) {
+  @if ($breakpoint == sm) {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if ($breakpoint == md) {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if ($breakpoint == lg) {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if ($breakpoint == xl) {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else {
+    @error "UNKNOWN MEDIA BREAKPOINT #{$breakpoint}";
+  }
+}

@@ -1,0 +1,9 @@
+.wrapper {
+  font-size: 13px;
+  font-weight: bold;
+  color: $secondary-main;
+
+  @include mq(md) {
+    // ...
+  }
+}

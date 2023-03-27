@@ -1,0 +1,10 @@
+.wrapper {
+  // ...
+
+  @include mq(md) {
+    // ...
+  }
+}
+
+.trigger {
+}

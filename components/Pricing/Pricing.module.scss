@@ -1,0 +1,159 @@
+.test {
+  @include mq(md) {
+    display: none;
+  }
+}
+
+.wrapper {
+  --columns: 1;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 2rem;
+
+  @include mq(md) {
+    --columns: 2;
+    align-items: stretch;
+  }
+
+  @include mq(lg) {
+    --columns: 4;
+    gap: 0.5rem;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  background-color: white;
+  box-shadow: 0 0.5rem 2rem rgba(39, 40, 41, 0.07);
+  transition: transform $transition-duration;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: $text-primary;
+
+  .featured & {
+    background-color: cornflowerblue;
+    color: white;
+  }
+
+  br {
+    height: 0.15rem;
+  }
+}
+
+.name {
+  font-weight: bold;
+  color: $primary-light;
+  margin-bottom: 0.5rem;
+
+  .featured & {
+    color: inherit;
+  }
+}
+
+.price {
+  font-size: 2.875rem;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 1.4375rem;
+  font-weight: bold;
+}
+
+.subtitle {
+  // margin-bottom: 1.375rem;
+  font-size: 0.9rem;
+  color: #878993;
+
+  .featured & {
+    color: inherit;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem 2rem;
+  flex: 1;
+}
+
+.featureList {
+  padding: 10px 0 20px;
+  display: grid;
+  gap: 0.5rem;
+
+  > * {
+    position: relative;
+    padding-left: 2rem;
+
+    &:before {
+      content: "✓";
+      display: inline-block;
+      color: #fff;
+      text-align: center;
+      border-radius: 15px;
+      font-weight: 700;
+      width: 15px;
+      height: 15px;
+      font-size: 10px;
+      line-height: 1.7;
+      background-color: #4fc685;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.featureDropdown {
+  margin-bottom: 3rem;
+
+  @include mq(md) {
+    display: block !important;
+    overflow: visible !important;
+    height: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  // button {
+  //   all: unset;
+  //   display: block;
+  //   width: 100%;
+  //   position: relative;
+  //   margin: 1rem 0;
+  //   padding-right: 1rem;
+
+  //   &:before {
+  //     content: 'v';
+  //     display: block;
+  //     position: absolute;
+  //     top: 50%;
+  //     right: 0;
+  //     transform: translateY(-50%);
+  //     transition: transform $transition-duration;
+  //   }
+  // }
+
+  // &.open button:before {
+  //   transform: translateY(-50%) scaleY(-1);
+  // }
+}
+
+.cta {
+  margin: auto auto 0;
+}

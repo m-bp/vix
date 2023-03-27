@@ -1,0 +1,35 @@
+.portableText {
+  /* @apply text-lg leading-relaxed; */
+  font-size: 1.2rem;
+}
+
+.portableText p,
+.portableText ul,
+.portableText ol,
+.portableText blockquote {
+  /* @apply my-2; */
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.portableText h2 {
+  /* @apply mt-8 mb-2 text-3xl leading-snug; */
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-size: 1.5rem;
+}
+
+.portableText h3 {
+  /* @apply mt-6 mb-2 text-2xl leading-snug; */
+  margin-top: 0.8em;
+  margin-bottom: 0.5em;
+  font-size: 1.3rem;
+}
+
+.portableText a {
+  /* @apply text-blue-500 underline; */
+}
+
+.portableText a:hover {
+  /* @apply text-blue-800; */
+}

@@ -1,0 +1,60 @@
+.wrapper {
+  // ...
+
+  @include mq(md) {
+    // ...
+  }
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem 0.5rem;
+
+  @include mq(md) {
+    &.left {
+      flex-direction: row;
+    }
+    &.right {
+      flex-direction: row-reverse;
+    }
+  }
+
+  > :first-child {
+    flex: 58;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  > :last-child {
+    flex: 42;
+  }
+}
+
+.content {
+  display: grid;
+  gap: 0.5rem;
+
+  @include mq(md) {
+    gap: 2rem;
+  }
+}
+
+.itemWrapper {
+  display: grid;
+  gap: 2rem;
+  font-size: 1.125rem;
+}
+
+.itemHeading {
+  font-size: 2rem;
+  color: $primary-light;
+}
+
+.media {
+  aspect-ratio: 8 / 6;
+}

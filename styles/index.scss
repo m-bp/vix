@@ -1,0 +1,167 @@
+// @import 'bootstrap-scss/_functions.scss';
+@import "./reset.scss";
+
+// $include-column-box-sizing: true !default;
+
+// @import 'bootstrap-scss/functions';
+// @import 'bootstrap-scss/variables';
+// @import 'bootstrap-scss/maps';
+
+// @import 'bootstrap-scss/mixins/lists';
+// @import 'bootstrap-scss/mixins/breakpoints';
+// @import 'bootstrap-scss/mixins/container';
+// @import 'bootstrap-scss/mixins/utilities';
+
+// @import 'bootstrap-scss/vendor/rfs';
+
+// @import 'bootstrap-scss/root';
+
+// @import 'bootstrap-scss/containers';
+
+// @import 'bootstrap-scss/utilities';
+// // Only use the utilities we need
+// // stylelint-disable-next-line scss/dollar-variable-default
+// $utilities: map-get-multiple(
+//   $utilities,
+//   (
+//     'display',
+//     'flex',
+//     'margin',
+//     'margin-x',
+//     'margin-y',
+//     'margin-top',
+//     'margin-bottom',
+//     'negative-margin',
+//     'negative-margin-x',
+//     'negative-margin-y',
+//     'negative-margin-top',
+//     'negative-margin-bottom',
+//     'padding',
+//     'padding-x',
+//     'padding-y',
+//     'padding-top',
+//     'padding-bottom',
+//   )
+// );
+
+// @import 'bootstrap-scss/utilities/api';
+
+/* @tailwind base; */
+
+body {
+  /* Removes the "elastic" effect when scrolling to the top/bottom of the page on Mac */
+  // overscroll-behavior-y: none;
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.document {
+  background-color: white;
+  color: $text-primary;
+  color: #878993;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  color: $text-primary;
+}
+
+.custom-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding: 0 24px;
+}
+
+br {
+  content: "";
+  display: block;
+  height: 1em;
+}
+
+/* @layer components {
+  .portableText {
+    @apply text-lg leading-relaxed;
+  }
+
+  .portableText p,
+  .portableText ul,
+  .portableText ol,
+  .portableText blockquote {
+    @apply mb-2;
+  }
+
+  .portableText p + p {
+    @apply mt-4;
+  }
+
+  .portableText ul {
+    @apply list-disc pl-6;
+  }
+
+  .portableText h2 {
+    @apply mt-8 mb-2 text-3xl leading-snug;
+  }
+
+  .portableText h3 {
+    @apply mt-8 mb-4 text-2xl leading-snug;
+  }
+
+  .portableText a {
+    @apply text-blue-500 underline;
+  }
+  .portableText a:hover {
+    @apply text-blue-800;
+  }
+} */
+
+.container {
+  width: 100%;
+  margin: auto;
+  max-width: 1280px;
+  padding: 0 1.5rem;
+}
+
+// @media (min-width: 640px) {
+//   .container {
+//     max-width: 640px;
+//   }
+// }
+
+// @media (min-width: 720px) {
+//   .container {
+//     max-width: 720px;
+//   }
+// }
+
+// @media (min-width: 768px) {
+//   .container {
+//     max-width: 768px;
+//   }
+// }
+
+// @media (min-width: 1024px) {
+//   .container {
+//     max-width: 1024px;
+//   }
+// }
+
+// @media (min-width: 1280px) {
+//   .container {
+//     max-width: 1280px;
+//   }
+// }
+
+// @media (min-width: 1536px) {
+//   .container {
+//     max-width: 1536px;
+//   }
+// }

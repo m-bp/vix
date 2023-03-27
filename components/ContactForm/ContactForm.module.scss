@@ -1,0 +1,64 @@
+.wrapper {
+  // ...
+
+  @include mq(md) {
+    // ...
+  }
+}
+
+.form {
+  margin: auto;
+  display: grid;
+  max-width: 600px;
+  gap: 1rem;
+  padding: 3rem;
+}
+
+.label {
+}
+
+.input {
+  display: block;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  // border-bottom-width: 2px;
+  padding: 1rem;
+
+  &::placeholder {
+    color: $text-primary;
+    opacity: 0.5;
+  }
+
+  &:focus {
+    // border-bottom-width: 4px;
+    outline: 2px solid $primary-light;
+  }
+}
+
+.fieldGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.good {
+  border-radius: 5px;
+  background-color: #a2fabf;
+  padding: 1rem;
+}
+
+.bad {
+  composes: good;
+  background-color: #de8181;
+  color: white;
+
+  ul {
+    list-style: circle;
+    list-style-position: inside;
+  }
+
+  li {
+    margin-top: 0.5rem;
+  }
+}

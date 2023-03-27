@@ -1,0 +1,7 @@
+.wrapper {
+  // ...
+
+  @include mq(md) {
+    // ...
+  }
+}
