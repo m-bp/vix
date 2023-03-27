@@ -7,21 +7,18 @@ import {
   settingsQuery,
 } from "lib/sanity.queries"
 
-export default function PreviewPage({
-  token,
-  slug,
-  locale,
-}: {
+type Props = {
   token: null | string
   slug: string
   locale: string
-}) {
-  const data: Page = usePreview(token, pageQuery, {
-    slug,
-    locale,
-  })
+}
 
+function PreviewPage({ token, slug, locale }: Props) {
+  const data: Page = usePreview(token, pageQuery, { slug, locale })
   const settings: Settings = usePreview(token, settingsQuery, { locale }) || {}
 
   return <PageComponent preview data={data} settings={settings} />
 }
+
+export default PreviewPage
+export type { Props as PreviewPageProps }

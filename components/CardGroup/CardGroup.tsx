@@ -4,7 +4,6 @@ import { urlForImage } from "lib/sanity.image"
 import Link from "next/link"
 import { s as schema } from "sanity-typed-schema-builder"
 import { cardGroupType } from "schemas"
-import { textType } from "schemas/chunks/text"
 
 import s from "./CardGroup.module.scss"
 
@@ -30,7 +29,9 @@ function CardGroup({ content, hasAnimation }: Props) {
                 <h3 className={s.title}>{title}</h3>
                 <p
                   className={s.body}
-                  dangerouslySetInnerHTML={{ __html: textType.parse(body) }}
+                  dangerouslySetInnerHTML={{
+                    __html: body.replace(/\n/g, "<br />"),
+                  }}
                 />
                 <h3 className={s.cta}>{cta.text}</h3>
               </div>

@@ -25,7 +25,7 @@ const type = s.objectNamed({
 
   components: {
     preview: () => (
-      <Preview title={ctaBannerSchema.title} icon={ctaBannerSchema.icon} />
+      <Preview title={type.schema().title} icon={type.schema().icon} />
     ),
   },
 })

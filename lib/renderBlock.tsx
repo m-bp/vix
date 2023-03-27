@@ -1,18 +1,4 @@
 import dynamic from "next/dynamic"
-import {
-  cardGroupSchema,
-  checkedListSchema,
-  columnsSchema,
-  contactFormSchema,
-  ctaBannerSchema,
-  ctaCardGroupSchema,
-  dynamicColumnsSchema,
-  featureListSchema,
-  pricingSchema,
-  pricingTableSchema,
-  spacerSchema,
-  textBlockSchema,
-} from "schemas"
 
 const DynamicColumns = dynamic(
   () => import("components/DynamicColumns/DynamicColumns")
@@ -44,40 +30,52 @@ export default function renderBlock(block, i) {
     //     <Hero2 key={key} {...block} />
     //   )
 
-    case textBlockSchema.name:
+    // case textBlockSchema.name:
+    case "textBlock":
       return <TextBlock key={key} {...block} />
 
-    case spacerSchema.name:
+    // case spacerSchema.name:
+    case "spacer":
       return <Spacer key={key} {...block} />
 
-    case contactFormSchema.name:
+    // case contactFormSchema.name:
+    case "contactForm":
       return <ContactForm key={key} {...block} />
 
-    case columnsSchema.name:
+    // case columnsSchema.name:
+    case "columns":
       return <Columns key={key} {...block} />
 
-    case dynamicColumnsSchema.name:
+    // case dynamicColumnsSchema.name:
+    case "dynamicColumns":
       return <DynamicColumns key={key} {...block} />
 
-    case checkedListSchema.name:
+    // case checkedListSchema.name:
+    case "checkedList":
       return <CheckedList key={key} {...block} />
 
-    case cardGroupSchema.name:
+    // case cardGroupSchema.name:
+    case "cardGroup":
       return <CardGroup key={key} {...block} />
 
-    case ctaCardGroupSchema.name:
+    // case ctaCardGroupSchema.name:
+    case "ctaCardGroup":
       return <CTACardGroup key={key} {...block} />
 
-    case featureListSchema.name:
+    // case featureListSchema.name:
+    case "featureList":
       return <FeatureList key={key} {...block} />
 
-    case ctaBannerSchema.name:
+    // case ctaBannerSchema.name:
+    case "ctaBanner":
       return <CTABanner key={key} {...block} />
 
-    case pricingSchema.name:
+    // case pricingSchema.name:
+    case "pricing":
       return <Pricing key={key} {...block} />
 
-    case pricingTableSchema.name:
+    // case pricingTableSchema.name:
+    case "pricingTable":
       return <PricingTable key={key} {...block} />
 
     default:
