@@ -2,12 +2,7 @@ import { CogIcon } from "@sanity/icons"
 import { s } from "sanity-typed-schema-builder"
 import { ctaAsLinkType, ctaType } from "schemas/objects/cta"
 import { customUrlType } from "schemas/objects/customUrl"
-
-const color = () =>
-  s.createType({
-    ...s.string(),
-    schema: () => ({ type: "color", options: { disableAlpha: true } } as const),
-  })
+import icon from "schemas/types/icon"
 
 const type = s.document({
   name: "settings",
@@ -130,7 +125,7 @@ const type = s.document({
                                         {
                                           name: "icon",
                                           title: "Icon",
-                                          type: s.string(),
+                                          type: icon(),
                                           optional: true,
                                         },
                                         {

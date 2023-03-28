@@ -1,4 +1,10 @@
 import bundleAnalyzer from "@next/bundle-analyzer"
+import CopyPlugin from "copy-webpack-plugin"
+import path from "path"
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const withBundleAnalyzer = bundleAnalyzer({ enabled: false })
 
@@ -58,6 +64,23 @@ const config = {
 
   //   return config
   // },
+  webpack: config => {
+    config.plugins.push(
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.join(
+              __dirname,
+              "node_modules/@material-design-icons/svg/filled"
+            ),
+            to: path.join(__dirname, "public/icons"),
+          },
+        ],
+      })
+    )
+
+    return config
+  },
 }
 
 export default withBundleAnalyzer(config)
