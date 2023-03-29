@@ -17,6 +17,8 @@ export default function Meta({ settings, page }: Props) {
     router.asPath === "/" ? "" : router.asPath
   }`.split("?")[0]
 
+  const hide = page?.seoHide
+
   return (
     <Head>
       <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -51,6 +53,8 @@ export default function Meta({ settings, page }: Props) {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />
+
+      {hide && <meta name="robots" content="none" />}
 
       {/* <meta property="og:locale" content="en_US" /> */}
       {/* <NextSeo title={title} description={description} /> */}

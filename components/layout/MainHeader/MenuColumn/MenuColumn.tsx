@@ -16,19 +16,10 @@ function Item(x: ItemProps) {
 
   return (
     <div className={s.item}>
-      {/* <div className={s.icon}>{x.icon ? <img src={Icon.src} /> : ""}</div> */}
       {x.icon ? (
-        <Image
-          alt=""
-          src={`icons/${x.icon}.svg`}
-          width={20}
-          height={20}
-          // src={
-          //   // eslint-disable-next-line @typescript-eslint/no-var-requires
-          //   require(`@material-design-icons/svg/filled/${x.icon}.svg`).default
-          //     .src
-          // }
-        />
+        <div className={s.iconWrapper}>
+          <Image alt="" src={`/icons/phone.svg`} width={16} height={16} />
+        </div>
       ) : (
         <div className={s.icon} />
       )}

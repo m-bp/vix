@@ -68,6 +68,14 @@ const type = s.document({
       fieldset: "seo",
     },
     {
+      name: "seoHide",
+      title: "Hide from search engines",
+      type: s.boolean({
+        initialValue: false,
+      }),
+      fieldset: "seo",
+    },
+    {
       name: "slug",
       title: "Slug",
       type: s.slug({

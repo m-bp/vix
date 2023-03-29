@@ -51,7 +51,18 @@
   width: 24px;
   height: 24px;
   background-color: var(--color);
-  border-radius: 5px;
+  border-radius: 6px;
+}
+
+.iconWrapper {
+  composes: icon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > img {
+    filter: invert(1);
+  }
 }
 
 .itemLink {

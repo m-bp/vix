@@ -16,6 +16,13 @@ export const seoFieldsClassic = () => {
       rows: 3,
       fieldset: "seo",
     }),
+    defineField({
+      name: "seoHide",
+      type: "boolean",
+      title: "Hide from search engines",
+      initialValue: false,
+      fieldset: "seo",
+    }),
   ]
 }
 
@@ -31,6 +38,14 @@ export const seoFields = (): Parameters<typeof s.document>[0]["fields"] => [
     title: "Description",
     type: s.text({
       rows: 3,
+    }),
+    fieldset: "seo",
+  },
+  {
+    name: "seoHide",
+    title: "Hide from search engines",
+    type: s.boolean({
+      initialValue: false,
     }),
     fieldset: "seo",
   },

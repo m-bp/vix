@@ -3,6 +3,7 @@ import { s } from "sanity-typed-schema-builder"
 import { textType } from "schemas/chunks/text"
 import { ctaAsLinkType } from "schemas/objects/cta"
 import Preview from "schemas/objects/helpers/Preview"
+import icon from "schemas/types/icon"
 
 const type = s.objectNamed({
   name: "featureList",
@@ -20,6 +21,13 @@ const type = s.objectNamed({
       }),
     },
     {
+      name: "center",
+      title: "Center content",
+      type: s.boolean({
+        initialValue: false,
+      }),
+    },
+    {
       name: "content",
       title: "Columns",
       type: s.array({
@@ -32,15 +40,15 @@ const type = s.objectNamed({
                 type: s.string(),
               },
               {
+                name: "icon",
+                title: "Icon",
+                type: icon(),
+                optional: true,
+              },
+              {
                 name: "body",
                 title: "Body",
                 type: textType,
-              },
-              {
-                name: "image",
-                title: "Image",
-                type: s.image(),
-                optional: true,
               },
               {
                 name: "cta",
