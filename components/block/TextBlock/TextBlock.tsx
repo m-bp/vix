@@ -1,6 +1,7 @@
 import { PortableText } from "@portabletext/react"
 import clsx from "clsx"
 import Heading from "components/Heading/Heading"
+import Typography from "components/Typography/Typography"
 import { s as schema } from "sanity-typed-schema-builder"
 import { textBlockType } from "schemas"
 
@@ -24,6 +25,11 @@ function TextBlock({ content, align }: Props) {
                 h4: ({ children }) => <Heading variant={4}>{children}</Heading>,
                 h5: ({ children }) => <Heading variant={5}>{children}</Heading>,
                 h6: ({ children }) => <Heading variant={6}>{children}</Heading>,
+                small: ({ children }) => (
+                  <Typography variant="small" component="small">
+                    {children}
+                  </Typography>
+                ),
               },
             }}
           />

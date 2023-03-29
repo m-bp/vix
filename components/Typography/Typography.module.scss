@@ -1,0 +1,16 @@
+.base {
+  // ...
+
+  @include mq(md) {
+    // ...
+  }
+}
+
+.normal {
+  // composes: base;
+}
+
+.small {
+  // composes: base;
+  font-size: 0.75rem;
+}
