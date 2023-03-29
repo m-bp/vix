@@ -21,9 +21,9 @@ function ContactForm({}: Props) {
 
     const data = JSON.stringify({
       formId: "contact-form",
-      firstName: event.target.firstName.value,
-      lastName: event.target.lastName.value,
-      companyEmail: event.target.companyEmail.value,
+      firstname: event.target.firstName.value,
+      lastname: event.target.lastName.value,
+      email: event.target.email.value,
       phone: event.target.phone.value,
     })
 
@@ -84,21 +84,9 @@ function ContactForm({}: Props) {
 
           <input
             className={s.input}
-            name="companyEmail"
+            name="email"
             placeholder="Company email*"
           />
-
-          <div>
-            <input
-              className={s.input}
-              name="password"
-              type="password"
-              placeholder="Password*"
-            />
-            <span style={{ paddingLeft: "1rem", fontSize: 12 }}>
-              Password must contain 1 small letter, 1 capital letter, 1 number.
-            </span>
-          </div>
 
           <input className={s.input} name="phone" placeholder="Phone*" />
 

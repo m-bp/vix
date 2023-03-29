@@ -1,61 +1,66 @@
+import { Client as HubspotClient } from "@hubspot/api-client"
+import { serverLog } from "lib/helpers"
 import type { NextApiRequest, NextApiResponse } from "next"
 import { z, ZodError } from "zod"
 
 const schema = z.object({
-  firstName: z.string().nonempty(),
-  lastName: z.string().nonempty(),
-  companyEmail: z.string().email("This is not a valid email."),
+  firstname: z.string().nonempty(),
+  lastname: z.string().nonempty(),
+  email: z.string().email("This is not a valid email."),
   phone: z.string().nonempty(),
 })
 
 export type DataResponse = ReturnType<typeof schema.safeParseAsync>
 
+const sanityToken = process.env.SANITY_API_WRITE_TOKEN
+const hubspotToken = process.env.HUBSPOT_APP_TOKEN
+
 export default async function createLead(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const token = process.env.SANITY_API_WRITE_TOKEN
-  if (!token) {
+  if (!sanityToken) {
     throw new Error("There is no `SANITY_API_WRITE_TOKEN` .env variable")
+  }
+
+  if (!hubspotToken) {
+    throw new Error("There is no `HUBSPOT_APP_TOKEN` .env variable")
   }
 
   const body = req.body
 
+  const isContactForm = body.formId === "contact-form"
+
+  if (!isContactForm)
+    return res.status(400).json({ error: true, message: "Invalid form ID" })
+
   try {
-    schema.parse(body)
+    const result = await schema.parseAsync(body)
+
+    const hubspotClient = new HubspotClient({ accessToken: hubspotToken })
+
+    const apiResponse = await hubspotClient.crm.contacts.basicApi.create({
+      properties: result,
+      associations: [],
+    })
+
+    serverLog(apiResponse)
   } catch (e) {
     if (e instanceof ZodError) {
       return res
         .status(400)
         .json({ error: true, issues: e.issues, message: "Error in validation" })
+    } else {
+      return res.status(400).json({
+        error: true,
+        issues: e.issues,
+        message:
+          e.message === "HTTP request failed"
+            ? console.error(JSON.stringify(e.response, null, 2))
+            : console.error(e),
+      })
     }
   }
-
-  // const isContactForm = body.formId === 'contact-form'
-
-  // if (isContactForm) {
-  //   const lead = {
-  //     _type: 'lead',
-  //     name: body.name,
-  //     business: body.business,
-  //     phone: body.phone,
-  //     email: body.email,
-  //   }
-
-  //   try {
-  //     const _client = createClient({
-  //       projectId,
-  //       dataset,
-  //       apiVersion,
-  //       useCdn,
-  //       token,
-  //     })
-  //     const result = await _client.create(lead)
-  //   } catch (error) {
-  //     console.log(error)
-  //     res.status(error.statusCode).json({ error: true, message: error })
-  //   }
-  // }
 
   res.status(200).json({ message: "Form submitted - Success!" })
 }
