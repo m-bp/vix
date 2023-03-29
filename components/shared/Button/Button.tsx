@@ -1,15 +1,15 @@
 import clsx from "clsx"
-import { ReactNode } from "react"
+import { HTMLProps, ReactNode } from "react"
 
 import s from "./Button.module.scss"
 
 type Props = {
   children: ReactNode
   className?: string
-  variant?: "primary" | "secondary" | "tertiary" | "link"
+  variant?: "primary" | "primary-light" | "secondary" | "tertiary" | "link"
   withShadow?: boolean
   as?: "a"
-}
+} & HTMLProps<"button">
 
 function Button({
   children,
