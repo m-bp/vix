@@ -16,7 +16,6 @@ const options: Parameters<typeof s.objectNamed>[0] = {
       title: "URL",
       type: s.url({
         hidden: ({ parent, value }) => !value && !!parent?.internal,
-        initialValue: "https://google.es",
       }),
       optional: true,
     },
