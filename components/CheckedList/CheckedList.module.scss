@@ -21,16 +21,9 @@
   color: #878993;
 }
 
-.check {
-}
-
 .text {
   position: relative;
   padding-left: 2rem;
-
-  @include mq(md) {
-    padding: 0;
-  }
 
   &:before {
     content: "✓";
@@ -47,15 +40,25 @@
     position: absolute;
     top: 0;
     left: 0;
+  }
 
+  > strong {
+    font-weight: bold;
+  }
+}
+
+.inlineText {
+  composes: text;
+
+  @include mq(md) {
+    padding: 0;
+  }
+
+  &:before {
     @include mq(md) {
       position: static;
       display: block;
       margin-bottom: 10px;
     }
-  }
-
-  > strong {
-    font-weight: bold;
   }
 }

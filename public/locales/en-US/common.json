@@ -1,0 +1,7 @@
+{
+  "firstName": "First name*",
+  "lastName": "Last name*",
+  "email": "Company email*",
+  "phone": "Phone*",
+  "submit": "Start a free trial"
+}

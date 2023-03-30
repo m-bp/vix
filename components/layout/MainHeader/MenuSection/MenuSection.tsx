@@ -1,9 +1,10 @@
-import MenuDropdown from "components/layout/MainHeader/MenuDropdown/MenuDropdown"
-import ChevronDown from "components/shared/icons/ChevronDown"
+import chev from "@material-design-icons/svg/filled/expand_more.svg"
+import MenuDropdown from "components/layout/MainHeader/MenuDropdown"
 import { getHref } from "lib/helpers"
+import { Settings } from "lib/sanity.queries"
+import Image from "next/image"
 import { useRouter } from "next/router"
 import { useRef, useState } from "react"
-import { Settings } from "sanity"
 import { useOnClickOutside } from "usehooks-ts"
 
 import s from "./MenuSection.module.scss"
@@ -23,17 +24,26 @@ function MenuSection({ dropdown, title, url, hasDropdown, ...rest }: Props) {
 
   if (hasDropdown)
     return (
-      <div style={{ position: "relative" }} ref={wrapperRef}>
+      <div ref={wrapperRef} className={s.wrapper}>
         <div onClick={() => setOpen(true)} className={s.dropdownWrapper}>
           <span style={{ fontWeight: "bold" }}>{title}</span>
-          <ChevronDown />
+          <Image
+            alt=""
+            width={16}
+            height={16}
+            src={chev}
+            style={{
+              filter:
+                "invert(66%) sepia(8%) saturate(358%) hue-rotate(193deg) brightness(82%) contrast(83%)",
+            }}
+          />
           {open && <MenuDropdown forwardRef={ref} dropdown={dropdown} />}
         </div>
       </div>
     )
 
   return (
-    <div>
+    <div className={s.wrapper}>
       <a href={getHref(url, locale)} style={{ fontWeight: "bold" }}>
         {title}
       </a>
@@ -42,4 +52,4 @@ function MenuSection({ dropdown, title, url, hasDropdown, ...rest }: Props) {
 }
 
 export default MenuSection
-export type { Props as MenuDropdownProps }
+export type { Props as MenuSectionProps }

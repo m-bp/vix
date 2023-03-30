@@ -11,23 +11,34 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem 0.5rem;
+  gap: 0.5rem 2rem;
 
   @include mq(md) {
+    gap: 2rem;
+
     &.left {
       flex-direction: row;
     }
+
     &.right {
       flex-direction: row-reverse;
     }
   }
+}
+
+.evenGrid {
+  composes: grid;
+
+  > * {
+    flex: 1;
+  }
+}
+
+.unevenGrid {
+  composes: grid;
 
   > :first-child {
     flex: 58;
-
-    img {
-      width: 100%;
-      height: auto;
-    }
   }
 
   > :last-child {
@@ -37,11 +48,12 @@
 
 .content {
   display: grid;
-  gap: 0.5rem;
+  gap: 2rem;
+}
 
-  @include mq(md) {
-    gap: 2rem;
-  }
+.ctaGroup {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .itemWrapper {
@@ -57,4 +69,13 @@
 
 .media {
   aspect-ratio: 8 / 6;
+}
+
+.form {
+  margin-top: 2rem;
+  width: 100%;
+
+  @include mq(md) {
+    margin-top: 0;
+  }
 }

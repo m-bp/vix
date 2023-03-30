@@ -1,4 +1,4 @@
-import Accordion from "components/shared/Accordion/Accordion"
+import Accordion from "components/shared/Accordion"
 import { type ReactNode, useState } from "react"
 
 type Props = {

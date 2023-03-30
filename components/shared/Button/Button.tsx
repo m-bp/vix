@@ -9,6 +9,7 @@ type Props = {
   variant?: "primary" | "primary-light" | "secondary" | "tertiary" | "link"
   withShadow?: boolean
   as?: "a"
+  fullWidth?: boolean
 } & HTMLProps<"button">
 
 function Button({
@@ -16,13 +17,20 @@ function Button({
   className,
   withShadow,
   as,
+  fullWidth,
   variant = "primary",
   ...rest
 }: Props) {
-  const Tag = as === "a" ? "a" : "button"
+  const Tag = as ?? "button"
+
   return (
     <Tag
-      className={clsx(s[variant], withShadow && s.withShadow, className)}
+      className={clsx(
+        s[variant],
+        fullWidth && s.fullWidth,
+        withShadow && s.withShadow,
+        className
+      )}
       {...rest}>
       {children}
     </Tag>

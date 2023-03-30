@@ -1,0 +1,92 @@
+.wrapper {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+  margin-top: 0.5rem;
+  // ...
+
+  @include mq(md) {
+    // ...
+  }
+}
+
+.title {
+  padding: 0.5rem 1rem;
+  background-color: rgba(39, 40, 41, 0.07);
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $text-primary;
+}
+
+.listWrapper {
+}
+
+.itemsWrapper {
+  display: grid;
+  padding-top: 1rem;
+}
+
+.itemsWrappersingle {
+  composes: itemsWrapper;
+}
+
+.itemsWrapperdouble {
+  composes: itemsWrapper;
+  grid-template-columns: 1fr 1fr;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  font-size: 15px;
+  min-width: 180px;
+  padding: 10px 20px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  background-color: var(--color);
+  border-radius: 6px;
+}
+
+.iconWrapper {
+  composes: icon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > img {
+    filter: invert(1);
+  }
+}
+
+.itemLink {
+  display: grid;
+
+  &:hover {
+    color: $primary-light;
+  }
+}
+
+.itemTitle {
+  color: #111111;
+}
+
+.description {
+  color: #aaaaaa;
+  font-size: 13px;
+}
+
+.divider {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}

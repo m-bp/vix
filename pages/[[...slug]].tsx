@@ -8,6 +8,7 @@ import {
   settingsQuery,
 } from "lib/sanity.queries"
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import { createClient } from "next-sanity"
 import { lazy } from "react"
 
@@ -54,6 +55,7 @@ export const getStaticProps: GetStaticProps<
       data: dataPromise || ({} as any),
       settings: settingsPromise || {},
       locale,
+      ...(await serverSideTranslations(locale, ["common"])),
     },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     // revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
@@ -72,13 +74,11 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   })
 
   const pageDataWithLocale = await Promise.all(
-    locales
-      .filter(x => x !== "default")
-      .map(async locale => {
-        const data = await client.fetch(pageSlugsQuery, { locale })
+    locales.map(async locale => {
+      const data = await client.fetch(pageSlugsQuery, { locale })
 
-        return { data, locale }
-      })
+      return { data, locale }
+    })
   )
 
   return {

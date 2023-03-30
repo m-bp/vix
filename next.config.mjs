@@ -1,10 +1,12 @@
 import bundleAnalyzer from "@next/bundle-analyzer"
 import CopyPlugin from "copy-webpack-plugin"
 import path from "path"
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url"
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import i18nConfig from "./next-i18next.config.js"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const withBundleAnalyzer = bundleAnalyzer({ enabled: false })
 
@@ -49,11 +51,7 @@ const config = {
     includePaths: ["./src"],
     prependData: `@import "styles/variables.module.scss";`,
   },
-  i18n: {
-    locales: ["default", "en-US", "es-ES"],
-    defaultLocale: "default",
-    ignoreRoutes: ["/studio"],
-  },
+  i18n: i18nConfig.i18n,
   // webpack(config) {
   //   config.plugins.push(
   //     require('unplugin-icons/webpack')({

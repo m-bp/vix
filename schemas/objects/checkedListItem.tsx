@@ -8,12 +8,6 @@ const type = s.objectNamed({
 
   fields: [
     {
-      name: "title",
-      type: s.string(),
-      title: "Title",
-      optional: true,
-    },
-    {
       name: "content",
       type: s.array({
         of: [s.block()],

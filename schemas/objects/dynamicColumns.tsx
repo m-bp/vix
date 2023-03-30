@@ -1,6 +1,8 @@
 import { DocumentsIcon, InlineElementIcon } from "@sanity/icons"
 import { s } from "sanity-typed-schema-builder"
-import { ctaType } from "schemas/objects/cta"
+import { checkedListItemType } from "schemas/objects/checkedListItem"
+import { contactFormType } from "schemas/objects/contactForm"
+import { ctaAsButtonType, ctaType } from "schemas/objects/cta"
 import Preview from "schemas/objects/helpers/Preview"
 
 const type = s.objectNamed({
@@ -62,6 +64,52 @@ const type = s.objectNamed({
               },
             ],
           }),
+          s.objectNamed({
+            name: "ctaGroup",
+            title: "CTA Group",
+            icon: InlineElementIcon,
+
+            fields: [
+              {
+                name: "title",
+                title: "Title",
+                type: s.string({
+                  initialValue: "CTA Group",
+                  hidden: true,
+                }),
+              },
+              {
+                name: "content",
+                title: "Content",
+                type: s.array({
+                  of: [ctaAsButtonType.ref()],
+                }),
+              },
+            ],
+          }),
+          s.objectNamed({
+            name: "smallCheckedList",
+            title: "Checked List",
+            icon: InlineElementIcon,
+
+            fields: [
+              {
+                name: "title",
+                title: "Title",
+                type: s.string({
+                  initialValue: "Checked List",
+                  hidden: true,
+                }),
+              },
+              {
+                name: "content",
+                title: "Content",
+                type: s.array({
+                  of: [checkedListItemType],
+                }),
+              },
+            ],
+          }),
           ctaType.ref(),
         ],
       }),
@@ -71,10 +119,7 @@ const type = s.objectNamed({
       title: "Media",
       type: s.array({
         max: 1,
-        of: [
-          s.image(),
-          // TODO: Add forms
-        ],
+        of: [s.image(), contactFormType.ref()],
       }),
     },
   ],

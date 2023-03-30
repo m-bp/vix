@@ -5,21 +5,17 @@ import { checkedListType } from "schemas/objects/checkedList"
 
 import s from "./CheckedList.module.scss"
 
-type Props = {} & schema.infer<typeof checkedListType>
+type Props = schema.infer<typeof checkedListType> & {
+  inline?: boolean
+}
 
-function CheckedList({ content }: Props) {
+function CheckedList({ content, inline }: Props) {
   return (
-    <div className="container">
+    <div className={clsx(inline && "container")}>
       <div className={clsx(s.wrapper)}>
-        {content.map(({ _key, title, content }) => (
-          <div key={_key} className={s.item}>
-            <div className={s.check} />
-            {/* <div
-              className={s.text}
-              dangerouslySetInnerHTML={{ __html: content }}
-            /> */}
-
-            <div className={s.text}>
+        {content.map(({ _key, content }, i) => (
+          <div key={_key || i} className={s.item}>
+            <div className={clsx(inline ? s.inlineText : s.text)}>
               <PortableText value={content} />
             </div>
           </div>

@@ -1,18 +1,23 @@
 import clsx from "clsx"
 import Button from "components/shared/Button"
+import { useTranslation } from "next-i18next"
 import { useState } from "react"
 import type { ZodError } from "zod"
 
 import s from "./ContactForm.module.scss"
 
-type Props = {}
+type Props = {
+  fullWidth?: boolean
+}
 
-function ContactForm({}: Props) {
+function ContactForm({ fullWidth }: Props) {
   const [data, setData] = useState<{
     message: string
     error?: boolean
     issues?: ZodError["issues"]
   } | null>()
+
+  const { t } = useTranslation()
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -45,10 +50,10 @@ function ContactForm({}: Props) {
   }
 
   return (
-    <div className="container">
-      <div className={clsx(s.wrapper)}>
+    <div className={clsx(!fullWidth && "container")}>
+      <div className={s.wrapper}>
         <form
-          className={s.form}
+          className={fullWidth ? s.wide : s.form}
           method="POST"
           action="/api/create-lead"
           onSubmit={handleSubmit}>
@@ -72,25 +77,21 @@ function ContactForm({}: Props) {
             <input
               className={s.input}
               name="firstName"
-              placeholder="First name*"
+              placeholder={t("firstName")}
             />
 
             <input
               className={s.input}
               name="lastName"
-              placeholder="Last name*"
+              placeholder={t("lastName")}
             />
           </div>
 
-          <input
-            className={s.input}
-            name="email"
-            placeholder="Company email*"
-          />
+          <input className={s.input} name="email" placeholder={t("email")} />
 
-          <input className={s.input} name="phone" placeholder="Phone*" />
+          <input className={s.input} name="phone" placeholder={t("phone")} />
 
-          <Button type="submit">Start a free trial</Button>
+          <Button type="submit">{t("submit")}</Button>
         </form>
       </div>
     </div>

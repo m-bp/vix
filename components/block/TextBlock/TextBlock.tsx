@@ -1,7 +1,7 @@
 import { PortableText } from "@portabletext/react"
 import clsx from "clsx"
-import Heading from "components/Heading/Heading"
-import Typography from "components/Typography/Typography"
+import Heading from "components/Heading"
+import Typography from "components/Typography"
 import { s as schema } from "sanity-typed-schema-builder"
 import { textBlockType } from "schemas"
 

@@ -1,7 +1,7 @@
 import Footer from "components/Footer"
 import MainHeader from "components/layout/MainHeader"
 import Meta from "components/layout/Meta"
-import PreviewBanner from "components/PreviewBanner/PreviewBanner"
+import PreviewBanner from "components/PreviewBanner"
 import { useSettings } from "context/SettingsContext"
 import { Page } from "lib/sanity.queries"
 

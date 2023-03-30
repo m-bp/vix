@@ -1,0 +1,39 @@
+.wrapper {
+  background-color: white;
+  // ...
+
+  @include mq(md) {
+    // ...
+  }
+}
+
+.columnGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  // grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.bottomLink {
+  padding: 10px 20px;
+  font-size: 15px;
+  border: 0.5rem solid white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(39, 40, 41, 0.07);
+  color: #222222;
+
+  &:hover {
+    color: $primary-light;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,6 +1,7 @@
 import "styles/index.scss"
 
 import type { AppProps } from "next/app"
+import { appWithTranslation } from "next-i18next"
 import { useMemo, useState } from "react"
 import GlobalStyles from "styles/GlobalStyles"
 
@@ -34,7 +35,7 @@ const ChromeFixUnstyledTransitions = () => {
   )
 }
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyles />
@@ -43,3 +44,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   )
 }
+
+export default appWithTranslation(App)

@@ -1,8 +1,129 @@
 import { CogIcon } from "@sanity/icons"
 import { s } from "sanity-typed-schema-builder"
-import { ctaAsLinkType, ctaType } from "schemas/objects/cta"
+import { ctaAsButtonType, ctaAsLinkType, ctaType } from "schemas/objects/cta"
 import { customUrlType } from "schemas/objects/customUrl"
 import icon from "schemas/types/icon"
+
+const headerLink = s.object({
+  fields: [
+    {
+      name: "title",
+      title: "Title",
+      type: s.string(),
+    },
+    {
+      name: "url",
+      title: "URL",
+      type: customUrlType,
+    },
+    {
+      name: "hasDropdown",
+      title: "Has Dropdown",
+      type: s.boolean({
+        initialValue: false,
+      }),
+    },
+    {
+      name: "dropdown",
+      title: "Dropdown",
+      type: s.object({
+        hidden: ({ parent }) => !parent?.hasDropdown,
+
+        fields: [
+          {
+            name: "title",
+            title: "Title",
+            type: s.string({
+              hidden: true,
+              initialValue: "Dropdown",
+            }),
+          },
+          {
+            name: "columns",
+            title: "Columns",
+            type: s.array({
+              of: [
+                s.object({
+                  fields: [
+                    {
+                      name: "title",
+                      title: "Title",
+                      type: s.string(),
+                      optional: true,
+                    },
+                    {
+                      name: "color",
+                      title: "Color",
+                      type: s.string(),
+                    },
+                    {
+                      name: "type",
+                      title: "Type",
+                      type: s.string({
+                        options: {
+                          list: ["single", "double"],
+                        },
+                      }),
+                    },
+                    {
+                      name: "items",
+                      title: "Items",
+                      type: s.array({
+                        of: [
+                          s.object({
+                            fields: [
+                              {
+                                name: "title",
+                                title: "Title",
+                                type: s.string(),
+                              },
+                              {
+                                name: "description",
+                                title: "Description",
+                                type: s.string(),
+                                optional: true,
+                              },
+                              {
+                                name: "icon",
+                                title: "Icon",
+                                type: icon(),
+                                optional: true,
+                              },
+                              {
+                                name: "url",
+                                title: "URL",
+                                type: customUrlType,
+                              },
+                            ],
+                          }),
+                        ],
+                      }),
+                    },
+                  ],
+                }),
+              ],
+            }),
+          },
+          {
+            name: "offset",
+            title: "Offset",
+            description: "Used to position the dropdown",
+            type: s.number(),
+          },
+          {
+            name: "bottomLink",
+            title: "Bottom link",
+            type: s.array({
+              max: 1,
+              of: [ctaAsLinkType],
+            }),
+            optional: true,
+          },
+        ],
+      }),
+    },
+  ],
+})
 
 const type = s.document({
   name: "settings",
@@ -39,132 +160,31 @@ const type = s.document({
       }),
     },
     {
+      name: "headerTopLink",
+      title: "Top link",
+      type: s.array({
+        max: 1,
+        of: [ctaAsLinkType],
+      }),
+      optional: true,
+      fieldset: "header",
+    },
+    {
       name: "headerLinks",
       title: "Links",
       type: s.array({
-        of: [
-          s.object({
-            fields: [
-              {
-                name: "title",
-                title: "Title",
-                type: s.string(),
-              },
-              {
-                name: "url",
-                title: "URL",
-                type: customUrlType,
-              },
-              {
-                name: "hasDropdown",
-                title: "Has Dropdown",
-                type: s.boolean({
-                  initialValue: false,
-                }),
-              },
-              {
-                name: "dropdown",
-                title: "Dropdown",
-                type: s.object({
-                  hidden: ({ parent }) => !parent?.hasDropdown,
-
-                  fields: [
-                    {
-                      name: "title",
-                      title: "Title",
-                      type: s.string({
-                        hidden: true,
-                        initialValue: "Dropdown",
-                      }),
-                    },
-                    {
-                      name: "columns",
-                      title: "Columns",
-                      type: s.array({
-                        of: [
-                          s.object({
-                            fields: [
-                              {
-                                name: "title",
-                                title: "Title",
-                                type: s.string(),
-                                optional: true,
-                              },
-                              {
-                                name: "color",
-                                title: "Color",
-                                type: s.string(),
-                              },
-                              {
-                                name: "type",
-                                title: "Type",
-                                type: s.string({
-                                  options: {
-                                    list: ["single", "double"],
-                                  },
-                                }),
-                              },
-                              {
-                                name: "items",
-                                title: "Items",
-                                type: s.array({
-                                  of: [
-                                    s.object({
-                                      fields: [
-                                        {
-                                          name: "title",
-                                          title: "Title",
-                                          type: s.string(),
-                                        },
-                                        {
-                                          name: "description",
-                                          title: "Description",
-                                          type: s.string(),
-                                          optional: true,
-                                        },
-                                        {
-                                          name: "icon",
-                                          title: "Icon",
-                                          type: icon(),
-                                          optional: true,
-                                        },
-                                        {
-                                          name: "url",
-                                          title: "URL",
-                                          type: customUrlType,
-                                        },
-                                      ],
-                                    }),
-                                  ],
-                                }),
-                              },
-                            ],
-                          }),
-                        ],
-                      }),
-                    },
-                    {
-                      name: "offset",
-                      title: "Offset",
-                      description: "Used to position the dropdown",
-                      type: s.number(),
-                    },
-                    {
-                      name: "bottomLink",
-                      title: "Bottom link",
-                      type: s.array({
-                        max: 1,
-                        of: [ctaAsLinkType],
-                      }),
-                      optional: true,
-                    },
-                  ],
-                }),
-              },
-            ],
-          }),
-        ],
+        of: [headerLink],
       }),
+      fieldset: "header",
+    },
+    {
+      name: "headerActions",
+      title: "Buttons",
+      type: s.array({
+        max: 2,
+        of: [ctaAsButtonType],
+      }),
+      optional: true,
       fieldset: "header",
     },
     {

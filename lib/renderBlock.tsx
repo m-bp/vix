@@ -1,26 +1,20 @@
 import dynamic from "next/dynamic"
 
-const DynamicColumns = dynamic(
-  () => import("components/DynamicColumns/DynamicColumns")
-)
-const PricingTable = dynamic(
-  () => import("components/PricingTable/PricingTable")
-)
-const Columns = dynamic(() => import("components/Columns/Columns"))
-const CheckedList = dynamic(() => import("components/CheckedList/CheckedList"))
-const ContactForm = dynamic(() => import("components/ContactForm/ContactForm"))
-const Spacer = dynamic(() => import("components/Spacer/Spacer"))
-const TextBlock = dynamic(() => import("components/block/TextBlock/TextBlock"))
-const CardGroup = dynamic(() => import("components/CardGroup/CardGroup"))
-const CTACardGroup = dynamic(
-  () => import("components/CTACardGroup/CTACardGroup")
-)
-const CTABanner = dynamic(() => import("components/CTABanner/CTABanner"))
-const FeatureList = dynamic(() => import("components/FeatureList/FeatureList"))
-const Pricing = dynamic(() => import("components/Pricing/Pricing"))
+const CTABanner = dynamic(() => import("components/CTABanner"))
+const CTACardGroup = dynamic(() => import("components/CTACardGroup"))
+const CardGroup = dynamic(() => import("components/CardGroup"))
+const CheckedList = dynamic(() => import("components/CheckedList"))
+const Columns = dynamic(() => import("components/Columns"))
+const ContactForm = dynamic(() => import("components/ContactForm"))
+const DynamicColumns = dynamic(() => import("components/DynamicColumns"))
+const FeatureList = dynamic(() => import("components/FeatureList"))
+const Pricing = dynamic(() => import("components/Pricing"))
+const PricingTable = dynamic(() => import("components/PricingTable"))
+const Spacer = dynamic(() => import("components/Spacer"))
+const TextBlock = dynamic(() => import("components/block/TextBlock"))
 
 export default function renderBlock(block, i) {
-  const key = `${block._id}${i}`
+  const key = block._key || `${block._id}${i}`
 
   switch (block._type) {
     // case 'hero':
